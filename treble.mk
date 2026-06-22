@@ -88,8 +88,8 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-service
 
 # Thermal HAL
-PRODUCT_PACKAGES += \
-    com.android.hardware.thermal.intel
+#PRODUCT_PACKAGES += \
+#    com.android.hardware.thermal.intel
 
 # Fingerprint
 PRODUCT_PACKAGES += \

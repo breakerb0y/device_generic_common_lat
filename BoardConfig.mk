@@ -138,12 +138,12 @@ BOARD_KERNEL_CMDLINE += \
 	intel_iommu=off
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
-BOARD_KERNEL_CMDLINE += console=tty0
+#BOARD_KERNEL_CMDLINE += console=tty0
 endif
 
-ifneq ($(TARGET_BUILD_VARIANT),user)
-BOARD_KERNEL_CMDLINE += console=ttyUSB0,115200n8
-endif
+#ifneq ($(TARGET_BUILD_VARIANT),user)
+BOARD_KERNEL_CMDLINE += console=ttyS0,115200 console=tty0 loglevel=7 initcall_debug ignore_loglevel
+#endif
 
 # Fix screen off when s2idle is entered
 BOARD_KERNEL_CMDLINE += vga=current drm.atomic=1 i915.nuclear_pageflip=1 drm.vblankoffdelay=1 i915.fastboot=1
@@ -194,7 +194,7 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(LOCAL_COMMON_TREE)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(LOCAL_COMMON_TREE)/sepolicy/vendor
 
 TARGET_FLATTEN_APEX := true
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 5000000000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 7000000000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 100663296
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 BOARD_USES_OEMIMAGE := true

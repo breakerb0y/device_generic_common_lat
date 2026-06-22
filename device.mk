@@ -163,7 +163,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 TARGET_DISABLE_EPPE := true
-PRODUCT_CHARACTERISTICS := device
+PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_AAPT_CONFIG := normal large xlarge mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
@@ -321,4 +321,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_VENDOR_PROPERTIES += drm.service.enabled=true
 
 PRODUCT_REQUIRES_INSECURE_EXECMEM_FOR_SWIFTSHADER := true
+
+#PRODUCT_COPY_FILES += \
+#    device/generic/firmware/i915/icl_dmc_ver1_09.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/i915/icl_dmc_ver1_09.bin
+
+ALL_FIRMWARE_SRC_FILES := $(shell find device/generic/firmware -type f)
+PRODUCT_COPY_FILES += \
+    $(foreach f,$(ALL_FIRMWARE_SRC_FILES),$(f):$(TARGET_COPY_OUT_VENDOR)/firmware/$(patsubst device/generic/firmware/%,%,$(f)))
 
